@@ -4,4 +4,26 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MainActivity"/>
+    android:background="@android:color/darker_gray"
+    tools:context=".MainActivity">
+    <com.itheima.coverflow.ui.FeatureCoverFlow
+        android:id="@+id/fcf_coverfiow"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent">
+    </com.itheima.coverflow.ui.FeatureCoverFlow>
+    <TextSwitcher
+        android:id="@+id/ts_title"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingBottom="20dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent">
+    </TextSwitcher>
+
+
+</android.support.constraint.ConstraintLayout>
