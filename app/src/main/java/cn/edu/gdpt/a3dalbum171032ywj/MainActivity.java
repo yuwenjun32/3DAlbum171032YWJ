@@ -2,7 +2,13 @@ package cn.edu.gdpt.a3dalbum171032ywj;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
 import android.widget.TextSwitcher;
+import android.widget.TextView;
+import android.widget.ViewSwitcher;
 
 import com.itheima.coverflow.ui.FeatureCoverFlow;
 
@@ -20,12 +26,32 @@ public class MainActivity extends AppCompatActivity {
         initView();
         initData();
         initCoverFlow();
+        initAnimation();
+    }
+
+    private void initAnimation() {
+        Animation in= AnimationUtils.loadAnimation(getApplicationContext(),R.anim.slide_in_top);
+        Animation out=AnimationUtils.loadAnimation(getApplicationContext(),R.anim.slice_out_bottom);
+        title.setInAnimation(in);
+        title.setOutAnimation(out);
     }
 
     private void initCoverFlow() {
         AlbumAdapter adapter=new AlbumAdapter(getApplicationContext());
         adapter.setData(dataList);
         coverflow.setAdapter(adapter);
+        coverflow.setOnScrollPositionListener(new FeatureCoverFlow.OnScrollPositionListener() {
+            @Override
+            public void onScrolledToPosition(int position) {
+                String[] name={"Girl","Spring Scenety","Summer Scenety","Autumn Scenety","Winter Scenety"};
+                title.setText(name[position]);
+            }
+
+            @Override
+            public void onScrolling() {
+
+            }
+        });
     }
 
     private void initData() {
@@ -46,5 +72,13 @@ public class MainActivity extends AppCompatActivity {
         coverflow.setRotationTreshold(0.5f);
         coverflow.setScalingThreshold(0.5f);
         coverflow.setSpacing(0.6f);
+        title.setFactory(new ViewSwitcher.ViewFactory() {
+            @Override
+            public View makeView() {
+                LayoutInflater inflater=LayoutInflater.from(getApplicationContext());
+                TextView view=(TextView)inflater.inflate(R.layout.item_title,null);
+                return view;
+            }
+        });
     }
 }
