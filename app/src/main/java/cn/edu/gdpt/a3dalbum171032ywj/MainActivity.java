@@ -19,6 +19,13 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         initView();
         initData();
+        initCoverFlow();
+    }
+
+    private void initCoverFlow() {
+        AlbumAdapter adapter=new AlbumAdapter(getApplicationContext());
+        adapter.setData(dataList);
+        coverflow.setAdapter(adapter);
     }
 
     private void initData() {
