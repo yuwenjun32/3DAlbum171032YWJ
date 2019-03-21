@@ -6,14 +6,27 @@ import android.widget.TextSwitcher;
 
 import com.itheima.coverflow.ui.FeatureCoverFlow;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class MainActivity extends AppCompatActivity {
     private FeatureCoverFlow coverflow;
     private TextSwitcher title;
+    private List<AlbumBean> dataList=new ArrayList<>();
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         initView();
+        initData();
+    }
+
+    private void initData() {
+        dataList.add(new AlbumBean(R.drawable.img_1,"Girl"));
+        dataList.add(new AlbumBean(R.drawable.img_2,"Spring Scenety"));
+        dataList.add(new AlbumBean(R.drawable.img_3,"Summer Scenety"));
+        dataList.add(new AlbumBean(R.drawable.img_4,"Autumn Scenety"));
+        dataList.add(new AlbumBean(R.drawable.img_5,"Winter Scenety"));
     }
 
     private void initView() {
