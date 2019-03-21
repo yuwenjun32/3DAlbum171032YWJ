@@ -49,6 +49,6 @@ public class AlbumAdapter extends BaseAdapter {
         }
         ViewHolder holder=(ViewHolder)view.getTag();
         holder.iv_img.setImageResource(dataList.get(i).imgResld);
-        return null;
+        return view;
     }
 }
